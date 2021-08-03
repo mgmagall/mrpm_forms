@@ -12,7 +12,7 @@
   </v-container>
 
   <v-container fluid>
-    <v-radio-group v-model="radioGroup">
+    <v-radio-group v-model="formData.radioGroup">
      <v-row no-gutters>
        <v-col md="8">
       <v-radio
@@ -21,10 +21,11 @@
        </v-col>
        <v-col>
          <v-select
-          v-model="select1"
-          :items="paymentOption1"
+          v-model="formData.select1"
+          :items="formData.paymentOption1"
           item-text="name"
           item-value="value"
+          @change="update"
           required
          ></v-select>
        </v-col>
@@ -38,10 +39,11 @@
       </v-col>
       <v-col>
         <v-select
-            v-model="select2"
-            :items="paymentOption2"
+            v-model="formData.select2"
+            :items="formData.paymentOption2"
             item-text="name"
             item-value="value"
+            @change="update"
             required
         ></v-select>
       </v-col>
@@ -55,10 +57,11 @@
         </v-col>
         <v-col>
           <v-select
-              v-model="select3"
-              :items="paymentOption3"
+              v-model="formData.select3"
+              :items="formData.paymentOption3"
               item-text="name"
               item-value="value"
+              @change="update"
               required
           ></v-select>
         </v-col>
@@ -173,17 +176,19 @@
       <v-subheader>Chart Code</v-subheader>
     </v-col>
     <v-col cols="2">
-      <v-text-field>
-
-      </v-text-field>
+      <v-text-field
+          v-model="formData.chartCode"
+          @change="update"
+      ></v-text-field>
     </v-col>
     <v-col cols="2">
       <v-subheader>Account Number</v-subheader>
     </v-col>
     <v-col cols="2">
-      <v-text-field>
-
-      </v-text-field>
+      <v-text-field
+          v-model="formData.accountNumber"
+          @change="update"
+      ></v-text-field>
     </v-col>
   </v-row>
   <v-row no-gutters>
@@ -194,10 +199,11 @@
     </v-col>
     <v-col cols="2">
       <v-select
-        v-model="cancerCenterSelect"
-        :items="cancerCenterMember"
+        v-model="formData.cancerCenterSelect"
+        :items="formData.cancerCenterMember"
         item-text="name"
         item-value="value"
+        @change="update"
         required
       ></v-select>
     </v-col>
@@ -208,10 +214,11 @@
     </v-col>
     <v-col cols="1">
       <v-select
-          v-model="projCancerRelated"
-          :items="cancerRelated"
+          v-model="formData.projCancerRelated"
+          :items="formData.cancerRelated"
           item-text="name"
           item-value="value"
+          @change="update"
           required
       ></v-select>
     </v-col>
@@ -247,38 +254,50 @@
 <script>
 export default {
   name: "PaymentInformation",
+  props:["paymentInformationData"],
 
   data: () => ({
-    select1: null,
-    select2: null,
-    select3: null,
-    cancerCenterSelect: null,
-    projCancerRelated: null,
-    paymentOption1:[
-      {name:'Check', value: 'check'},
-      {name: 'Credit Card', value: 'creditCard'},
-      {name: 'Wire Transfer', value: 'wireTransfer'},
-    ],
-    paymentOption2:[
-      {name:'Purchase Order', value: 'purchaseOrder'},
-      {name: 'Check', value: 'check'},
-      {name: 'Credit Card', value: 'creditCard'},
-    ],
-    paymentOption3:[
-      {name:'Campus Recharge (UCD)', value: 'campusRecharge'},
-      {name: 'Intercampus String (other UCs)', value: 'instercampusString'},
-      {name: 'Purchase Order', value: 'purchaseOrder'},
-      {name: 'Check', value: 'check'},
-      {name: 'Credit Card', value: 'creditCard'},
-    ],
-    cancerCenterMember:[
-      {name:'Yes', value: 'yes'},
-      {name: 'No', value: 'no'},
-    ],
-    cancerRelated:[
-      {name:'Yes', value: 'yes'},
-      {name: 'No', value: 'no'},
-    ],
-  })
+    formData: {
+      select1: null,
+      select2: null,
+      select3: null,
+      chartCode: null,
+      accountNumber: null,
+      cancerCenterSelect: null,
+      projCancerRelated: null,
+      paymentOption1:[
+        {name:'Check', value: 'check'},
+        {name: 'Credit Card', value: 'creditCard'},
+        {name: 'Wire Transfer', value: 'wireTransfer'},
+      ],
+      paymentOption2:[
+        {name:'Purchase Order', value: 'purchaseOrder'},
+        {name: 'Check', value: 'check'},
+        {name: 'Credit Card', value: 'creditCard'},
+      ],
+      paymentOption3:[
+        {name:'Campus Recharge (UCD)', value: 'campusRecharge'},
+        {name: 'Intercampus String (other UCs)', value: 'instercampusString'},
+        {name: 'Purchase Order', value: 'purchaseOrder'},
+        {name: 'Check', value: 'check'},
+        {name: 'Credit Card', value: 'creditCard'},
+      ],
+      cancerCenterMember:[
+        {name:'Yes', value: 'yes'},
+        {name: 'No', value: 'no'},
+      ],
+      cancerRelated:[
+        {name:'Yes', value: 'yes'},
+        {name: 'No', value: 'no'},
+      ],
+    },
+
+  }),
+
+  methods: {
+    update() {
+      this.$emit("updatePaymentInformation",this.$data.formData)
+    }
+  },
 }
 </script>

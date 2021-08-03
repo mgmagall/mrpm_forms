@@ -1,5 +1,16 @@
 <template>
   <v-form>
+
+    <v-container>
+      <v-col
+          class="mb-5"
+          cols="12"
+      >
+        <h2 class="headline font-weight-bold mb-3">
+          Contact Information
+        </h2>
+      </v-col>
+    </v-container>
     <v-container>
       <v-row no-gutters>
         <v-col>
@@ -14,7 +25,7 @@
 
         <v-col>
           <v-text-field
-            v-model="contactLN"
+            v-model="formData.contactLN"
             label="Contact Last Name"
             @change="update"
             filled
@@ -24,8 +35,9 @@
 
         <v-col>
           <v-text-field
-              v-model="cTelNum"
+              v-model="formData.cTelNum"
               label="Contact Tel Number"
+              @change="update"
               filled
               outlined
           ></v-text-field>
@@ -33,16 +45,18 @@
 
         <v-col>
           <v-text-field
-              v-model="cFaxNum"
+              v-model="formData.cFaxNum"
               label="Contact Fax Number"
+              @change="update"
               filled
           ></v-text-field>
         </v-col>
 
         <v-col>
           <v-text-field
-              v-model="cEmail"
+              v-model="formData.cEmail"
               label="Contact Email"
+              @change="update"
               filled
               outlined
           ></v-text-field>
@@ -52,16 +66,18 @@
       <v-row no-gutters>
         <v-col>
           <v-text-field
-            v-model="piFN"
+            v-model="formData.piFN"
             label="PI First Name"
+            @change="update"
             filled
           ></v-text-field>
         </v-col>
 
         <v-col>
           <v-text-field
-            v-model="piLN"
+            v-model="formData.piLN"
             label="PI Last Name"
+            @change="update"
             filled
             outlined
           ></v-text-field>
@@ -69,16 +85,18 @@
 
         <v-col>
           <v-text-field
-            v-model="piTelNum"
+            v-model="formData.piTelNum"
             label="PI Tel Number"
+            @change="update"
             filled
           ></v-text-field>
         </v-col>
 
         <v-col>
           <v-text-field
-              v-model="piFaxNum"
+              v-model="formData.piFaxNum"
               label="PI Fax Number"
+              @change="update"
               filled
               outlined
           ></v-text-field>
@@ -86,8 +104,9 @@
 
         <v-col>
           <v-text-field
-              v-model="piEmail"
+              v-model="formData.piEmail"
               label="PI Email"
+              @change="update"
               filled
           ></v-text-field>
         </v-col>
@@ -97,8 +116,9 @@
       <v-row no-gutters>
         <v-col>
           <v-text-field
-            v-model="institution"
+            v-model="formData.institution"
             label="Institution"
+            @change="update"
             filled
             outlined
           ></v-text-field>
@@ -106,16 +126,18 @@
 
         <v-col>
           <v-text-field
-            v-model="school"
+            v-model="formData.school"
             label="School"
+            @change="update"
             filled
           ></v-text-field>
         </v-col>
 
         <v-col sm="3">
           <v-text-field
-            v-model="cancerCenterMember"
+            v-model="formData.cancerCenterMember"
             label="UCD Cancer Center Member?"
+            @change="update"
             filled
             outlined
           ></v-text-field>
@@ -125,16 +147,18 @@
       <v-row no-gutters>
         <v-col>
           <v-text-field
-            v-model="address"
+            v-model="formData.address"
             label="Address"
+            @change="update"
             filled
           ></v-text-field>
         </v-col>
 
         <v-col>
           <v-text-field
-            v-model="city"
+            v-model="formData.city"
             label="City"
+            @change="update"
             filled
             outlined
           ></v-text-field>
@@ -142,16 +166,18 @@
 
         <v-col>
           <v-text-field
-            v-model="state_province"
+            v-model="formData.state_province"
             label="State/Province"
+            @change="update"
             filled
           ></v-text-field>
         </v-col>
 
         <v-col>
           <v-text-field
-            v-model="zip"
+            v-model="formData.zip"
             label="Zip/Postal Code"
+            @change="update"
             filled
             outlined
           ></v-text-field>
@@ -161,11 +187,12 @@
       <v-row align="center" no-gutters>
         <v-col cols="4">
           <v-select
-              v-model="select"
+              v-model="formData.select"
               :items="contactforResults"
               item-text="name"
               item-value="value"
               label="Primary contact for Results"
+              @change="update"
               required
           ></v-select>
         </v-col>
@@ -181,26 +208,25 @@
    props:["contactData"],
   data: () => ({
     formData: {
-      contactFN: ""//this.contactData.firstName,
+      contactFN: "",//this.contactData.firstName,
+      contactLN: null,
+      cTelNum: null,
+      cFaxNum: null,
+      cEmail: null,
+      piFN: null,
+      piLN: null,
+      piTelNum: null,
+      piFaxNum: null,
+      piEmail: null,
+      institution: null,
+      school: null,
+      cancerCenterMember: null,
+      address: null,
+      city: null,
+      state_province: null,
+      zip: null,
+      select: null,
     },
-
-    contactLN: null,
-    cTelNum: null,
-    cFaxNum: null,
-    cEmail: null,
-    piFN: null,
-    piLN: null,
-    piTelNum: null,
-    piFaxNum: null,
-    piEmail: null,
-    institution: null,
-    school: null,
-    cancerCenterMember: null,
-    address: null,
-    city: null,
-    state_province: null,
-    zip: null,
-    select: null,
     contactforResults: [
       {name: 'Principal Investigator', value:'pi'},
       {name: 'Laboratory Contact', value:'lc'},

@@ -422,10 +422,24 @@
         </p>
       </v-row>
     </v-container>
+
     <contact
         :contactData.sync="formData.contactData"
         @updateContact="updateContact"
     ></contact>
+
+    <BillingInformation
+        :billingInformationDatat.sync="formData.billingInformationData"
+        @updateBillingInformation="updateBillingInformation"
+    ></BillingInformation>
+
+    <PaymentInformation
+      :paymentInformationData.sync="formData.paymentInformationData"
+      @updatePaymentInformation="updatePaymentInformation"
+    ></PaymentInformation>
+
+
+
     <v-btn @click="submit">
       send form
     </v-btn>
@@ -436,21 +450,31 @@
 <script>
 
 import contact from './ContactInformation';
+import PaymentInformation from "./PaymentInformation";
+import BillingInformation from "./BillingInformation";
 
 export default {
   name: "GenotypingInformation",
   data: () => ({
+    strainName: null,
     row: null,
     standardPCRCheckBx: null,
+    qpcrDblReact: null,
+    qpcrSglReact: null,
+    snp: null,
     formData: {
       formType: "genotyping",
       formVersion: "0.1",
       strainName: undefined,
-      contactData: {}
+      contactData: {},
+      paymentInformationData: {},
+      billingInformationData: {}
     },
   }),
   components: {
-    contact
+    contact,
+    PaymentInformation,
+    BillingInformation,
   },
   methods: {
     submit: function(){
@@ -460,8 +484,16 @@ export default {
 },
     updateContact: function (contactInfo){
       this.$data.formData.contactData= contactInfo;
+    },
+
+    updatePaymentInformation: function(paymentInfo){
+      this.$data.formData.paymentInformationData= paymentInfo;
+    },
+
+    updateBillingInformation: function (billingInfo){
+      this.$data.formData.billingInformationData= billingInfo;
     }
-  }
+  },
 }
 </script>
 

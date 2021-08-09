@@ -22,7 +22,7 @@
        <v-col>
          <v-select
           v-model="formData.select1"
-          :items="formData.paymentOption1"
+          :items="paymentOption1"
           item-text="name"
           item-value="value"
           @change="update"
@@ -40,7 +40,7 @@
       <v-col>
         <v-select
             v-model="formData.select2"
-            :items="formData.paymentOption2"
+            :items="paymentOption2"
             item-text="name"
             item-value="value"
             @change="update"
@@ -58,7 +58,7 @@
         <v-col>
           <v-select
               v-model="formData.select3"
-              :items="formData.paymentOption3"
+              :items="paymentOption3"
               item-text="name"
               item-value="value"
               @change="update"
@@ -200,7 +200,7 @@
     <v-col cols="2">
       <v-select
         v-model="formData.cancerCenterSelect"
-        :items="formData.cancerCenterMember"
+        :items="cancerCenterMember"
         item-text="name"
         item-value="value"
         @change="update"
@@ -215,7 +215,7 @@
     <v-col cols="1">
       <v-select
           v-model="formData.projCancerRelated"
-          :items="formData.cancerRelated"
+          :items="cancerRelated"
           item-text="name"
           item-value="value"
           @change="update"
@@ -265,32 +265,33 @@ export default {
       accountNumber: null,
       cancerCenterSelect: null,
       projCancerRelated: null,
-      paymentOption1:[
-        {name:'Check', value: 'check'},
-        {name: 'Credit Card', value: 'creditCard'},
-        {name: 'Wire Transfer', value: 'wireTransfer'},
-      ],
-      paymentOption2:[
-        {name:'Purchase Order', value: 'purchaseOrder'},
-        {name: 'Check', value: 'check'},
-        {name: 'Credit Card', value: 'creditCard'},
-      ],
-      paymentOption3:[
-        {name:'Campus Recharge (UCD)', value: 'campusRecharge'},
-        {name: 'Intercampus String (other UCs)', value: 'instercampusString'},
-        {name: 'Purchase Order', value: 'purchaseOrder'},
-        {name: 'Check', value: 'check'},
-        {name: 'Credit Card', value: 'creditCard'},
-      ],
-      cancerCenterMember:[
-        {name:'Yes', value: 'yes'},
-        {name: 'No', value: 'no'},
-      ],
-      cancerRelated:[
-        {name:'Yes', value: 'yes'},
-        {name: 'No', value: 'no'},
-      ],
     },
+
+    paymentOption1:[
+      {name:'Check', value: 'check'},
+      {name: 'Credit Card', value: 'creditCard'},
+      {name: 'Wire Transfer', value: 'wireTransfer'},
+    ],
+    paymentOption2:[
+      {name:'Purchase Order', value: 'purchaseOrder'},
+      {name: 'Check', value: 'check'},
+      {name: 'Credit Card', value: 'creditCard'},
+    ],
+    paymentOption3:[
+      {name:'Campus Recharge (UCD)', value: 'campusRecharge'},
+      {name: 'Intercampus String (other UCs)', value: 'instercampusString'},
+      {name: 'Purchase Order', value: 'purchaseOrder'},
+      {name: 'Check', value: 'check'},
+      {name: 'Credit Card', value: 'creditCard'},
+    ],
+    cancerCenterMember:[
+      {name:'Yes', value: 'yes'},
+      {name: 'No', value: 'no'},
+    ],
+    cancerRelated:[
+      {name:'Yes', value: 'yes'},
+      {name: 'No', value: 'no'},
+    ],
 
   }),
 

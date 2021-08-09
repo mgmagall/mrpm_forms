@@ -36,9 +36,9 @@
           </v-subheader>
         </v-col>
         <v-col cols="4">
-          <v-text-field>
-
-          </v-text-field>
+          <v-text-field
+              v-model="formData.strainGeneticBckg"
+          ></v-text-field>
         </v-col>
       </v-row>
       <v-row no-gutters>
@@ -49,9 +49,9 @@
           </v-subheader>
         </v-col>
         <v-col cols="4">
-          <v-text-field>
-
-          </v-text-field>
+          <v-text-field
+              v-model="formData.allele"
+          ></v-text-field>
         </v-col>
         <v-col cols="2">
           <v-subheader>
@@ -60,16 +60,16 @@
           </v-subheader>
         </v-col>
         <v-col cols="4">
-          <v-text-field>
-
-          </v-text-field>
+          <v-text-field
+              v-model="formData.esCellLnID"
+          ></v-text-field>
         </v-col>
       </v-row>
 
       <v-row no-gutters>
         <v-subheader>Is the mutation X-linked?</v-subheader>
         <v-radio-group
-            v-model="row"
+            v-model="formData.row"
             row
         >
           <v-radio
@@ -120,6 +120,7 @@
         </v-col>
       </v-row>
 
+      <v-radio-group v-model="formData.stndPCRService">
       <v-row no-gutters>
         <v-col>
           <v-radio
@@ -167,11 +168,12 @@
           </p>
         </v-col>
       </v-row>
+      </v-radio-group>
 
       <v-row no-gutters>
         <v-col>
           <v-checkbox
-              v-model="standardPCRCheckBx"
+              v-model="formData.standardPCRCheckBx"
               :label="`Standard PCR: Mutant vs. Wildtype`"
           ></v-checkbox>
         </v-col>
@@ -225,9 +227,11 @@
         </v-col>
       </v-row>
 
+      <v-radio-group v-model="formData.qntPCRService">
       <v-row no-gutters>
         <v-col>
           <v-radio
+              v-model="formData.qpcrDev"
               label="QPCR Development: MBP-Generated Protocol"
               value="qpcrMBPProtocol"
           ></v-radio>
@@ -252,6 +256,7 @@
       <v-row no-gutters>
         <v-col>
           <v-radio
+              v-model="formData.qpcrProtocolInc"
               label="Protocol Incorporation: Customer-Provided Protocol"
               value="qpcrCustomerProtocol"
           ></v-radio>
@@ -272,11 +277,12 @@
           </p>
         </v-col>
       </v-row>
+      </v-radio-group>
 
       <v-row no-gutters>
         <v-col>
           <v-checkbox
-              v-model="qpcrDblReact"
+              v-model="formData.qpcrDblReact"
               :label="`QPCR Double Reaction: Zygosity Testing, Copy Number Analysis`"
           ></v-checkbox>
         </v-col>
@@ -299,7 +305,7 @@
       <v-row no-gutters>
         <v-col>
           <v-checkbox
-              v-model="qpcrSglReact"
+              v-model="formData.qpcrSglReact"
               :label="`QPCR Single Reaction: Cre,LacZ, Gender Determination`"
           ></v-checkbox>
         </v-col>
@@ -356,7 +362,7 @@
       <v-row no-gutters>
         <v-col>
           <v-checkbox
-              v-model="snp"
+              v-model="formData.snp"
               :label="`Single Nucleotide Polymorphism (SNP)`"
           ></v-checkbox>
         </v-col>
@@ -456,16 +462,21 @@ import BillingInformation from "./BillingInformation";
 export default {
   name: "GenotypingInformation",
   data: () => ({
-    strainName: null,
-    row: null,
-    standardPCRCheckBx: null,
-    qpcrDblReact: null,
-    qpcrSglReact: null,
-    snp: null,
     formData: {
       formType: "genotyping",
       formVersion: "0.1",
-      strainName: undefined,
+      strainGeneticBckg: null,
+      allele: null,
+      esCellLnID: null,
+      strainName: null,
+      row: null,
+      stndPCRService: null,
+      standardPCRCheckBx: null,
+      qntPCRService: null,
+      qpcrDblReact: null,
+      qpcrSglReact: null,
+      snp: null,
+      //strainName: undefined
       contactData: {},
       paymentInformationData: {},
       billingInformationData: {}

@@ -12,7 +12,7 @@
   </v-container>
 
   <v-container fluid>
-    <v-radio-group v-model="formData.radioGroup">
+    <v-radio-group v-model="formData.paymentChoice">
      <v-row no-gutters>
        <v-col md="8">
       <v-radio
@@ -21,7 +21,7 @@
        </v-col>
        <v-col>
          <v-select
-          v-model="formData.select1"
+          v-model="formData.internationalInvestigator"
           :items="paymentOption1"
           item-text="name"
           item-value="value"
@@ -39,7 +39,7 @@
       </v-col>
       <v-col>
         <v-select
-            v-model="formData.select2"
+            v-model="formData.domesticInvestigator"
             :items="paymentOption2"
             item-text="name"
             item-value="value"
@@ -57,7 +57,7 @@
         </v-col>
         <v-col>
           <v-select
-              v-model="formData.select3"
+              v-model="formData.ucInvestigator"
               :items="paymentOption3"
               item-text="name"
               item-value="value"
@@ -258,9 +258,10 @@ export default {
 
   data: () => ({
     formData: {
-      select1: null,
-      select2: null,
-      select3: null,
+      paymentChoice: null,
+      internationalInvestigator: null,
+      domesticInvestigator: null,
+      ucInvestigator: null,
       chartCode: null,
       accountNumber: null,
       cancerCenterSelect: null,

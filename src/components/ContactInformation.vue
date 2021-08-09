@@ -187,7 +187,7 @@
       <v-row align="center" no-gutters>
         <v-col cols="4">
           <v-select
-              v-model="formData.select"
+              v-model="formData.contactForRslts"
               :items="contactforResults"
               item-text="name"
               item-value="value"
@@ -225,12 +225,12 @@
       city: null,
       state_province: null,
       zip: null,
-      select: null,
+      contactForRslts: null,
     },
     contactforResults: [
-      {name: 'Principal Investigator', value:'pi'},
-      {name: 'Laboratory Contact', value:'lc'},
-      {name: 'Both', value: 'nc'},
+      {name: 'Principal Investigator', value:'Principal Investigator'},
+      {name: 'Laboratory Contact', value:'Laboratory Contact'},
+      {name: 'Both', value: 'Both'},
     ],
   }),
    methods: {

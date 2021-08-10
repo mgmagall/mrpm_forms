@@ -231,7 +231,6 @@
       <v-row no-gutters>
         <v-col>
           <v-radio
-              v-model="formData.qpcrDev"
               label="QPCR Development: MBP-Generated Protocol"
               value="qpcrMBPProtocol"
           ></v-radio>
@@ -256,7 +255,6 @@
       <v-row no-gutters>
         <v-col>
           <v-radio
-              v-model="formData.qpcrProtocolInc"
               label="Protocol Incorporation: Customer-Provided Protocol"
               value="qpcrCustomerProtocol"
           ></v-radio>
@@ -429,6 +427,136 @@
       </v-row>
     </v-container>
 
+    <v-data-table
+      :headers="headers"
+      :items="samples"
+      class="elevation-1"
+      >
+      <template v-slot:top>
+        <v-toolbar
+          flat
+          >
+          <v-toolbar-title>Sample Information</v-toolbar-title>
+          <v-divider
+            class="mx-4"
+            inset
+            vertical
+            ></v-divider>
+          <v-spacer></v-spacer>
+          <v-dialog
+            v-model="dialog"
+            max-width="500px"
+            >
+            <template v-slot:activator="{on,attrs}">
+              <v-btn
+                color="primary"
+                dark
+                class="mb-2"
+                v-bind="attrs"
+                v-on="on"
+                >
+                New Sample
+              </v-btn>
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="textt-h5">{{formTitle}}</span>
+              </v-card-title>
+
+              <v-card-text>
+                <v-container>
+                  <v-row>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      >
+                      <v-text-field
+                        v-model="editedSample.id"
+                        label="Sample ID"
+                        ></v-text-field>
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      >
+                      <v-text-field
+                        v-model="editedSample.sex"
+                        labe="Sex"
+                        ></v-text-field>
+                    </v-col>
+                    <v-col
+                      cols="12"
+                      sm="6"
+                      md="4"
+                      >
+                      <v-text-field
+                        v-model="editedSample.parentalGeno"
+                        label="Parental Genotypes: Mother/Father"
+                        ></v-text-field>
+                    </v-col>
+                  </v-row>
+                </v-container>
+              </v-card-text>
+
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="close"
+                  >
+                  Cancel
+                </v-btn>
+                <v-btn
+                  color="blue darken-1"
+                  text
+                  @click="save"
+                  >
+                  Save
+                </v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+          <v-dialog v-model="dialogDelete" max-width="500px">
+            <v-card>
+              <v-card-title class="textt-h5">Are you sure you want to delete this item?</v-card-title>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
+                <v-btn color="blue darken-1" text @click="deleteSampleConfirm">OK</v-btn>
+                <v-spacer></v-spacer>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-toolbar>
+      </template>
+      <template v-slot:item.actions="{sample}">
+        <v-icon
+          small
+          class="mr-2"
+          @click="editSample(sample)"
+          >
+          mdi-pencil
+        </v-icon>
+        <v-icon
+          small
+          @click="deleteSample(sample)"
+          >
+          mdi-delete
+        </v-icon>
+      </template>
+      <template v-slot:no-data>
+        <v-btn
+          color="primary"
+          @click="initialize"
+          >
+          Reset
+        </v-btn>
+      </template>
+    </v-data-table>
+
     <contact
         :contactData.sync="formData.contactData"
         @updateContact="updateContact"
@@ -462,6 +590,52 @@ import BillingInformation from "./BillingInformation";
 export default {
   name: "GenotypingInformation",
   data: () => ({
+    dialog: false,
+    dialogDelete: false,
+    headers:[
+      {
+        text: 'Sample ID', align: 'start', value: 'sampleID'
+      },
+      {
+        text: 'Sex', value: 'sex'
+      },
+      {
+        text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno'
+      }
+
+    ],
+    samples:[],
+    editedIndex: -1,
+    editedSample: {
+      id: '',
+      sex: '',
+      parentalGeno: ','
+    },
+    defaultSample:{
+      id: '',
+      sex: '',
+      parentalGeno: '',
+    },
+
+    computed: {
+      formTitle(){
+        return this.editedIndex === -1 ? 'New Sample' : 'Edit Sample'
+      },
+    },
+
+    watch: {
+      dialog (val) {
+        val || this.close()
+      },
+      dialogDelete (val) {
+        val || this.closeDelete()
+      },
+    },
+
+    created(){
+      this.initialize()
+    },
+
     formData: {
       formType: "genotyping",
       formVersion: "0.1",
@@ -488,11 +662,79 @@ export default {
     BillingInformation,
   },
   methods: {
+    initialize(){
+      this.samples = [
+        {id: '',
+        sex: '',
+        parentalGeno:''
+        },
+        {id: '',
+          sex: '',
+          parentalGeno:''
+        },
+        {id: '',
+          sex: '',
+          parentalGeno:''
+        },
+        {id: '',
+          sex: '',
+          parentalGeno:''
+        },
+        {id: '',
+          sex: '',
+          parentalGeno:''
+        },
+
+      ]
+    },
+
+    editSample (sample) {
+      this.editedIndex = this.samples.indexOf(sample)
+      this.editedSample = Object.assign({},sample)
+      this.dialog = true
+    },
+
+    deleteSample (sample) {
+      this.editedIndex = this.samples.indexOf(sample)
+      this.editedSample = Object.assign({},sample)
+      this.dialogDelete = true
+    },
+
+    deleteSampleConfirm () {
+      this.samples.splice(this.editedIndex, 1)
+      this.closeDelete()
+    },
+
+    close () {
+      this.dialog =false
+      this.$nextTick(() => {
+        this.editedSample = Object.assign({},this.defaultSample)
+        this.editedIndex=-1
+      })
+    },
+
+    closeDelete () {
+      this.dialogDelete = false
+      this.$nextTick(() => {
+        this.editedSample = Object.assign({}, this.defaultSample)
+        this.editedIndex = -1
+      })
+    },
+
+    save () {
+      if(this.editedIndex > -1){
+        Object.assign(this.samples[this.editedIndex],this.editedSample)
+      } else{
+        this.samples.push(this.editedSample)
+      }
+      this.close()
+    },
+
     submit: function(){
       const formData= JSON.stringify(this.$data.formData);
       console.log(formData);
+    },
 
-},
     updateContact: function (contactInfo){
       this.$data.formData.contactData= contactInfo;
     },
@@ -503,7 +745,7 @@ export default {
 
     updateBillingInformation: function (billingInfo){
       this.$data.formData.billingInformationData= billingInfo;
-    }
+    },
   },
 }
 </script>

@@ -460,7 +460,7 @@
             </template>
             <v-card>
               <v-card-title>
-                <span class="textt-h5">{{formTitle}}</span>
+                <span class="text-h5">{{computed.formTitle()}}</span>
               </v-card-title>
 
               <v-card-text>
@@ -483,7 +483,7 @@
                       >
                       <v-text-field
                         v-model="editedSample.sex"
-                        labe="Sex"
+                        label="Sex"
                         ></v-text-field>
                     </v-col>
                     <v-col
@@ -521,7 +521,7 @@
           </v-dialog>
           <v-dialog v-model="dialogDelete" max-width="500px">
             <v-card>
-              <v-card-title class="textt-h5">Are you sure you want to delete this item?</v-card-title>
+              <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -532,7 +532,7 @@
           </v-dialog>
         </v-toolbar>
       </template>
-      <template v-slot:item.actions="{sample}">
+      <template v-slot:item.actions="{ sample }">
         <v-icon
           small
           class="mr-2"
@@ -601,6 +601,9 @@ export default {
       },
       {
         text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno'
+      },
+      {
+        text: 'Actions', value: 'actions', sortable: false
       }
 
     ],
@@ -609,7 +612,7 @@ export default {
     editedSample: {
       id: '',
       sex: '',
-      parentalGeno: ','
+      parentalGeno: ''
     },
     defaultSample:{
       id: '',
@@ -618,8 +621,8 @@ export default {
     },
 
     computed: {
-      formTitle(){
-        return this.editedIndex === -1 ? 'New Sample' : 'Edit Sample'
+      formTitle: function () {
+        return this.editedIndex === -1 ? 'Edit Sample' : 'New Sample'
       },
     },
 

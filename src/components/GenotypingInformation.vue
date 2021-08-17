@@ -428,7 +428,7 @@
     </v-container>
 
     <v-data-table
-      :headers="headers"
+      :headers="computed.headers()"
       :items="samples"
       class="elevation-1"
       >
@@ -532,17 +532,17 @@
           </v-dialog>
         </v-toolbar>
       </template>
-      <template v-slot:item.actions="{ sample }">
+      <template v-slot:item.actions="{ item }">
         <v-icon
           small
           class="mr-2"
-          @click="editSample(sample)"
+          @click="editSample(item)"
           >
           mdi-pencil
         </v-icon>
         <v-icon
           small
-          @click="deleteSample(sample)"
+          @click="deleteSample(item)"
           >
           mdi-delete
         </v-icon>
@@ -592,21 +592,6 @@ export default {
   data: () => ({
     dialog: false,
     dialogDelete: false,
-    headers:[
-      {
-        text: 'Sample ID', align: 'start', value: 'sampleID'
-      },
-      {
-        text: 'Sex', value: 'sex'
-      },
-      {
-        text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno'
-      },
-      {
-        text: 'Actions', value: 'actions', sortable: false
-      }
-
-    ],
     samples:[],
     editedIndex: -1,
     editedSample: {
@@ -621,6 +606,15 @@ export default {
     },
 
     computed: {
+      headers() {
+        return [
+          {text: 'Sample ID', align: 'start', value: 'sampleID'},
+          {text: 'Sex', value: 'sex'},
+          {text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno'},
+          {text: 'Actions', value: 'actions', sortable: false}
+        ]
+      },
+
       formTitle: function () {
         return this.editedIndex === -1 ? 'Edit Sample' : 'New Sample'
       },
@@ -667,27 +661,18 @@ export default {
   methods: {
     initialize(){
       this.samples = [
-        {id: '',
-        sex: '',
-        parentalGeno:''
+        {id: '0',
+        sex: 'sample',
+        parentalGeno:'sample'
         },
-        {id: '',
-          sex: '',
-          parentalGeno:''
+        {id: '1',
+          sex: 'n/a',
+          parentalGeno:'n/a'
         },
-        {id: '',
-          sex: '',
-          parentalGeno:''
+        {id: '2',
+          sex: 'N/A',
+          parentalGeno:'N/A'
         },
-        {id: '',
-          sex: '',
-          parentalGeno:''
-        },
-        {id: '',
-          sex: '',
-          parentalGeno:''
-        },
-
       ]
     },
 

@@ -536,12 +536,14 @@
         <v-icon
           small
           class="mr-2"
+          color="blue"
           @click="editSample(item)"
           >
           mdi-pencil
         </v-icon>
         <v-icon
           small
+          color="red"
           @click="deleteSample(item)"
           >
           mdi-delete
@@ -608,7 +610,7 @@ export default {
     computed: {
       headers() {
         return [
-          {text: 'Sample ID', align: 'start', value: 'sampleID'},
+          {text: 'Sample ID', align: 'start', value: 'id'},
           {text: 'Sex', value: 'sex'},
           {text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno'},
           {text: 'Actions', value: 'actions', sortable: false}

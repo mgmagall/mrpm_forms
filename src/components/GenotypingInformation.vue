@@ -594,7 +594,11 @@ export default {
   data: () => ({
     dialog: false,
     dialogDelete: false,
-    samples:[],
+    samples:[{id:"", sex:"", parentalGeno:""},
+      {id:"", sex:"", parentalGeno:""},
+      {id:"", sex:"", parentalGeno:""},
+      {id:"", sex:"", parentalGeno:""},
+      {id:"", sex:"", parentalGeno:""}],
     editedIndex: -1,
     editedSample: {
       id: '',
@@ -612,13 +616,13 @@ export default {
         return [
           {text: 'Sample ID', align: 'start', value: 'id'},
           {text: 'Sex', value: 'sex'},
-          {text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno'},
+          {text: 'Parental Genotypes: Mother/Father', value: 'parentalGeno', sortable: false},
           {text: 'Actions', value: 'actions', sortable: false}
         ]
       },
 
       formTitle: function () {
-        return this.editedIndex === -1 ? 'Edit Sample' : 'New Sample'
+        return this.editedIndex === -1 ? 'New Sample': 'Edit Sample'
       },
     },
 
@@ -663,17 +667,25 @@ export default {
   methods: {
     initialize(){
       this.samples = [
-        {id: '0',
-        sex: 'sample',
-        parentalGeno:'sample'
+        {id: "",
+        sex: "",
+        parentalGeno:""
         },
-        {id: '1',
-          sex: 'n/a',
-          parentalGeno:'n/a'
+        {id: "",
+          sex: "",
+          parentalGeno:""
         },
-        {id: '2',
-          sex: 'N/A',
-          parentalGeno:'N/A'
+        {id: "",
+          sex: "",
+          parentalGeno: ""
+        },
+        {id: "",
+          sex: "",
+          parentalGeno: ""
+        },
+        {id: "",
+          sex: "",
+          parentalGeno: ""
         },
       ]
     },

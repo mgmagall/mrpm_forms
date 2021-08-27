@@ -460,7 +460,7 @@
             </template>
             <v-card>
               <v-card-title>
-                <span class="text-h5">{{computed.formTitle()}}</span>
+                <span class="text-h5">{{formTitle}}</span>
               </v-card-title>
 
               <v-card-text>
@@ -621,8 +621,8 @@ export default {
         ]
       },
 
-      formTitle: function () {
-        return this.editedIndex === -1 ? 'New Sample': 'Edit Sample'
+      formTitle () {
+        return this.editedIndex === -1 ? 'Edit Sample' : 'New Sample'
       },
     },
 

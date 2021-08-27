@@ -19,6 +19,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "genotypingForm" */ '../views/GenotypingForm.vue')
   },
   {
+    path: '/kitRequestForm',
+    name: 'Kit Request Form',
+    component: () => import(/* webpackChunkName: "kitRequestForm" */ '../views/KitRequestForm.vue')
+  },
+  {
     path: '/contact',
     name: 'Contact Information',
     component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
@@ -26,12 +31,12 @@ const routes = [
   {
     path: '/billing',
     name: 'Billing Information',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/Billing.vue')
+    component: () => import(/* webpackChunkName: "billing" */ '../views/Billing.vue')
   },
   {
     path: '/payment',
     name: 'Payment Information',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/Payment.vue')
+    component: () => import(/* webpackChunkName: "payment" */ '../views/Payment.vue')
   },
 ]
 

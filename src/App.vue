@@ -3,6 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/genotypingForm">GenotypingForm</router-link> |
+      <router-link to="/kitRequestForm">KitRequestForm</router-link> |
       <router-link to="/contact">Contact</router-link> |
       <router-link to="/billing">Billing</router-link> |
       <router-link to="/payment">Payment</router-link>

@@ -565,7 +565,7 @@
     ></contact>
 
     <BillingInformation
-        :billingInformationDatat.sync="formData.billingInformationData"
+        :billingInformationData.sync="formData.billingInformationData"
         @updateBillingInformation="updateBillingInformation"
     ></BillingInformation>
 

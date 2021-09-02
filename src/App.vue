@@ -1,18 +1,77 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/genotypingForm">GenotypingForm</router-link> |
-      <router-link to="/kitRequestForm">KitRequestForm</router-link> |
-      <router-link to="/contact">Contact</router-link> |
-      <router-link to="/billing">Billing</router-link> |
-      <router-link to="/payment">Payment</router-link>
-    </div>
-    <v-app>
-    <router-view/>
-    </v-app>
-  </div>
+  <v-app id="app">
+    <v-app-bar
+        color="blue accent-4"
+        dense
+        dark
+    >
+      <v-toolbar-title>Forms</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-menu
+          left
+          bottom
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+              icon
+              v-bind="attrs"
+              v-on="on"
+          >
+            <v-icon>mdi-menu</v-icon>
+            Form Selection
+          </v-btn>
+        </template>
+
+        <v-list>
+          <v-list-item
+              v-for="n in menu"
+              :key="n.id"
+              @click="() => {}"
+          >
+            <v-list-item-title>
+              <router-link :to="n.path">
+              {{ n.name }}
+              </router-link>
+            </v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+      <v-spacer></v-spacer>
+    </v-app-bar>
+    <v-main>
+      <router-view/>
+    </v-main>
+    <v-footer
+      color="blue"
+      padless
+      >
+      <v-row>
+        <v-col cols="6">
+          <v-textarea label="to load" :value="textToLoad"></v-textarea>
+          <v-btn>Load</v-btn>
+        </v-col>
+        <v-col cols="6">
+          <v-textarea label="as serialized" :value="serialized"></v-textarea>
+        </v-col>
+      </v-row>
+    </v-footer>
+  </v-app>
 </template>
+
+<script>
+export default {
+  name: "formsApp",
+  data: () => ({
+    menu: [
+      {id: 1, name: 'About', path: '/'},
+      {id: 2, name: 'Genotyping', path: '/genotypingForm'},
+      {id: 3, name: 'Kit', path: '/kitRequestForm'},
+    ],
+    dataToLoad: '',
+    serialized: ''
+  })
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -21,18 +80,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 </style>

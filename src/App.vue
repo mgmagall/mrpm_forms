@@ -67,7 +67,7 @@ export default {
       {id: 2, name: 'Genotyping', path: '/genotypingForm'},
       {id: 3, name: 'Kit', path: '/kitRequestForm'},
     ],
-    dataToLoad: '',
+    textToLoad: '',
     serialized: ''
   })
 }

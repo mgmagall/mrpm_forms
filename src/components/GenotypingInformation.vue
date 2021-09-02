@@ -96,7 +96,7 @@
 
       <v-row no-gutters>
         <v-col>
-          <p class="font-weight-bold">
+          <p class="font-weight-bold text-left">
             Service
           </p>
         </v-col>
@@ -125,17 +125,17 @@
               value="standardService"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $483.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $699.38
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $747.68
           </p>
@@ -149,17 +149,17 @@
               value="incorporationService"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $101.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $146.25
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $156.35
           </p>
@@ -203,7 +203,7 @@
 
       <v-row no-gutters>
         <v-col>
-          <p class="font-weight-bold">
+          <p class="font-weight-bold text-left">
             Service
           </p>
         </v-col>
@@ -232,17 +232,17 @@
               value="qpcrMBPProtocol"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $464.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $671.87
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $718.27
           </p>
@@ -256,17 +256,17 @@
               value="qpcrCustomerProtocol"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $101.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $146.25
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $156.35
           </p>
@@ -333,7 +333,7 @@
 
       <v-row no-gutters>
         <v-col>
-          <p class="font-weight-bold">
+          <p class="font-weight-bold text-left">
             Service
           </p>
         </v-col>

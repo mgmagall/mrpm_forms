@@ -28,25 +28,10 @@ const routes = [
     name: 'MICL Services Form',
     component: () => import(/* webpackChunkName: "MICLServicesForm" */ '../views/MICLServicesForm.vue')
   },
-  {
-    path: '/contact',
-    name: 'Contact Information',
-    component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')
-  },
-  {
-    path: '/billing',
-    name: 'Billing Information',
-    component: () => import(/* webpackChunkName: "billing" */ '../views/Billing.vue')
-  },
-  {
-    path: '/payment',
-    name: 'Payment Information',
-    component: () => import(/* webpackChunkName: "payment" */ '../views/Payment.vue')
-  },
 ]
 
 const router = new VueRouter({
-  routes
+    routes
 })
 
 export default router

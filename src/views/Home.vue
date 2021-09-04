@@ -1,18 +1,18 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>paragraph explaining project</p>
+    <p>Select a form from the list above.</p>
+    <p>With a form selected you can paste JSON into the "to load" textbox and load the data into the form.</p>
+    <p>Submitting a form should result in the form's data being serialized to JSON in the "as serialized" textbox.</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
-  }
 }
 </script>
+
+<style>
+</style>

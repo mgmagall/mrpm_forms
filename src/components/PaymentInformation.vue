@@ -79,10 +79,7 @@
         </p>
       </div>
       <p class="text-left">
-        Please make all checks payable to:
-      </p>
-      <p class="font-weight-bold text-center">
-        The Regents of U.C.
+        Please make all checks payable to: <b>The Regents of U.C.</b>
       </p>
     </v-col>
 
@@ -93,38 +90,32 @@
         </p>
       </div>
       <p class="text-left">
-        PO's should be made out to:
+        PO's should be made out to: <b> University of California, Davis</b>
       </p>
-      <p class="font-weight-bold text-center">
-        University of California, Davis
-      </p>
+
     </v-col>
   </v-row>
   <v-row no-gutters>
     <v-col cols="7">
-      <p class="font-weight-bold text-left">
-        Remit Address:
-      </p>
-      <p>
+      <p class="text-left" style="text-align:right">
+        <b>Remit Address:</b>
+
         The Regents of U.C.<br/>Cashier's Office<br/>University of California, Davis
         <br/>P.O.Box 989602<br/>West Sacramento, CA 95798-9062
       </p>
-      <p class="text-left">You will receive an MBP-Project# to reference upon project initiation.</p>
+      <br/>
+      <p class="text-left"><br/>You will receive an MBP-Project# to reference upon project initiation.</p>
     </v-col>
     <v-col>
-      <p class="font-weight-bold text-left">
-        Company Name:
-      </p>
-      <p>
+      <p class="text-left" >
+        <b>Company Name:</b>
         Mouse Biology Program<br/>University of California, Davis
       </p>
-      <p class="font-weight-bold text-left">
-        Mailing Address:
-      </p>
-      <p>
+      <p class="text-left">
+        <b>Mailing Address:</b>
         UCD MBP Facility<br/>2795 2nd Street, Suite 400<br/>Davis, CA 95618
       </p>
-      <p class="text-left">You will receive an MBP-Project# to reference upon project initiation.</p>
+      <p class="text-left"><br/>You will receive an MBP-Project# to reference upon project initiation.</p>
     </v-col>
   </v-row>
 
@@ -135,8 +126,8 @@
           Wire Transfers/Credit Card Payments:
         </p>
       </div>
-      <p class="text-left">
-        We will send you instructions via email on how to pay with a credit card or wire transfer.
+      <p class="text-left" >
+         We will send you instructions via email on how to pay with a credit card or wire transfer.
       </p>
     </v-col>
     <v-col>
@@ -167,13 +158,13 @@
   </v-row>
 
   <v-row no-gutters>
-    <v-col cols="3">
+    <v-col class="text-left" cols="3">
       <p>
         Please fill out the following:
       </p>
     </v-col>
     <v-col cols="2">
-      <v-subheader>Chart Code</v-subheader>
+      <v-subheader> <b>Chart Code</b></v-subheader>
     </v-col>
     <v-col cols="2">
       <v-text-field
@@ -182,7 +173,7 @@
       ></v-text-field>
     </v-col>
     <v-col cols="2">
-      <v-subheader>Account Number</v-subheader>
+      <v-subheader><b>Account Number</b></v-subheader>
     </v-col>
     <v-col cols="2">
       <v-text-field
@@ -192,9 +183,9 @@
     </v-col>
   </v-row>
   <v-row no-gutters>
-    <v-col cols="5">
-      <v-subheader>
-        Are you a member of the Comprehensive Cancer Center?
+    <v-col cols="5" >
+      <v-subheader >
+        <b>Are you a member of the Comprehensive Cancer Center?</b>
       </v-subheader>
     </v-col>
     <v-col cols="2">
@@ -208,8 +199,7 @@
       ></v-select>
     </v-col>
     <v-col cols="3">
-      <v-subheader>
-        If yes, is this project cancer related?
+      <v-subheader><b>If yes, is this project cancer related?</b>
       </v-subheader>
     </v-col>
     <v-col cols="1">

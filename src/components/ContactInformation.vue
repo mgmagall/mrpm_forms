@@ -1,19 +1,22 @@
 <template>
   <v-form>
-
     <v-container>
-      <v-col
+      <v-row>
+        <v-col
           class="mb-5"
-          cols="12"
+          cols="10"
       >
         <h2 class="headline font-weight-bold mb-3">
           Contact Information
         </h2>
+
       </v-col>
+      </v-row>
+
     </v-container>
     <v-container>
-      <v-row no-gutters>
-        <v-col>
+      <v-row >
+        <v-col cols="6" sm="12" lg="4"  >
           <v-text-field
               v-model="formData.contactFN"
               label="Contact First Name"
@@ -22,18 +25,17 @@
               outlined
           ></v-text-field>
         </v-col>
-
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.contactLN"
             label="Contact Last Name"
             @change="update"
             filled
-            oulined
+            outlined
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
               v-model="formData.cTelNum"
               label="Contact Tel Number"
@@ -43,16 +45,17 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
               v-model="formData.cFaxNum"
               label="Contact Fax Number"
               @change="update"
               filled
+              outlined
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
               v-model="formData.cEmail"
               label="Contact Email"
@@ -63,17 +66,18 @@
         </v-col>
       </v-row>
 
-      <v-row no-gutters>
-        <v-col>
+      <v-row>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.piFN"
             label="PI First Name"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.piLN"
             label="PI Last Name"
@@ -83,16 +87,17 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.piTelNum"
             label="PI Tel Number"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
               v-model="formData.piFaxNum"
               label="PI Fax Number"
@@ -102,19 +107,20 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
               v-model="formData.piEmail"
               label="PI Email"
               @change="update"
               filled
+              outlined
           ></v-text-field>
         </v-col>
 
       </v-row>
 
-      <v-row no-gutters>
-        <v-col>
+      <v-row >
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.institution"
             label="Institution"
@@ -124,16 +130,17 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.school"
             label="School"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
 
-        <v-col sm="3">
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.cancerCenterMember"
             label="UCD Cancer Center Member?"
@@ -144,17 +151,18 @@
         </v-col>
       </v-row>
 
-      <v-row no-gutters>
-        <v-col>
+      <v-row>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.address"
             label="Address"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.city"
             label="City"
@@ -164,16 +172,17 @@
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.state_province"
             label="State/Province"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
 
-        <v-col>
+        <v-col cols="6" sm="12" lg="4" >
           <v-text-field
             v-model="formData.zip"
             label="Zip/Postal Code"

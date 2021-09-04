@@ -1,6 +1,6 @@
 <template>
   <div class="genotypingForm">
-    <GenotypingInformation msg="This is the start of the genotyping form"/>
+    <GenotypingInformation />
   </div>
 </template>
 
@@ -12,6 +12,5 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
 </style>

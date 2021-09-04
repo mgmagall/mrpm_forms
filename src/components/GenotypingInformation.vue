@@ -1,6 +1,7 @@
 <template>
-  <form>
+  <v-form>
     <v-container>
+      <v-row>
       <v-col
           class="mb-5"
           cols="12"
@@ -9,10 +10,11 @@
           Genotyping Request Form
         </h2>
       </v-col>
+      </v-row>
     </v-container>
 
     <v-container fluid>
-      <v-row no-gutters>
+      <v-row>
         <div>
           <p class="font-weight-bold text-left">
             Strain Information <br/>
@@ -20,28 +22,23 @@
         </div>
       </v-row>
 
-      <v-row no-gutters>
-        <v-col cols="1">
-          <v-subheader>Strain Name:</v-subheader>
-        </v-col>
-        <v-col cols="4">
+      <v-row>
+        <v-col cols="6">
           <v-text-field
               v-model="formData.strainName"
+              label="Strain Name"
           ></v-text-field>
         </v-col>
-        <v-col cols="2">
-          <v-subheader>
-            Strain Genetic Background:<br/>
-            (e.g.: C57BL6/J, Balb/CJ, 129X1/SvJ, FVB/NJ, etc.)
-          </v-subheader>
-        </v-col>
-        <v-col cols="4">
+        <v-col cols="6">
           <v-text-field
               v-model="formData.strainGeneticBckg"
+              label="Strain Genetic Background"
+              placeholder="e.g.: C57BL6/J, Balb/CJ, 129X1/SvJ, FVB/NJ, etc."
           ></v-text-field>
         </v-col>
       </v-row>
-      <v-row no-gutters>
+
+      <v-row>
         <v-col cols="1">
           <v-subheader>
             MMRC/KOMP Allele:<br/>
@@ -99,7 +96,7 @@
 
       <v-row no-gutters>
         <v-col>
-          <p class="font-weight-bold">
+          <p class="font-weight-bold text-left">
             Service
           </p>
         </v-col>
@@ -128,17 +125,17 @@
               value="standardService"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $483.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $699.38
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $747.68
           </p>
@@ -152,17 +149,17 @@
               value="incorporationService"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $101.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $146.25
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $156.35
           </p>
@@ -206,7 +203,7 @@
 
       <v-row no-gutters>
         <v-col>
-          <p class="font-weight-bold">
+          <p class="font-weight-bold text-left">
             Service
           </p>
         </v-col>
@@ -235,17 +232,17 @@
               value="qpcrMBPProtocol"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $464.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $671.87
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $718.27
           </p>
@@ -259,17 +256,17 @@
               value="qpcrCustomerProtocol"
           ></v-radio>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $101.00
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $146.25
           </p>
         </v-col>
-        <v-col cols="2">
+        <v-col cols="2 text-center">
           <p>
             $156.35
           </p>
@@ -336,7 +333,7 @@
 
       <v-row no-gutters>
         <v-col>
-          <p class="font-weight-bold">
+          <p class="font-weight-bold text-left">
             Service
           </p>
         </v-col>
@@ -460,7 +457,7 @@
             </template>
             <v-card>
               <v-card-title>
-                <span class="text-h5">{{formTitle}}</span>
+                <span class="text-h5">New Sample</span>
               </v-card-title>
 
               <v-card-text>
@@ -580,7 +577,7 @@
       send form
     </v-btn>
 
-  </form>
+  </v-form>
 </template>
 
 <script>
@@ -594,11 +591,7 @@ export default {
   data: () => ({
     dialog: false,
     dialogDelete: false,
-    samples:[{id:"", sex:"", parentalGeno:""},
-      {id:"", sex:"", parentalGeno:""},
-      {id:"", sex:"", parentalGeno:""},
-      {id:"", sex:"", parentalGeno:""},
-      {id:"", sex:"", parentalGeno:""}],
+    samples:[],
     editedIndex: -1,
     editedSample: {
       id: '',

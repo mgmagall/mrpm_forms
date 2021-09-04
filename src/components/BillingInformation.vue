@@ -1,6 +1,7 @@
 <template>
   <v-form>
     <v-container>
+
       <v-col
           class="mb-5"
           cols="12"
@@ -11,8 +12,8 @@
       </v-col>
     </v-container>
     <v-container>
-      <v-row no-gutters>
-        <v-col>
+      <v-row >
+        <v-col col="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.billingFN"
             label="Billing Contact First Name"
@@ -21,15 +22,16 @@
             outlined
           ></v-text-field>
         </v-col>
-        <v-col>
+        <v-col col="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.billingLN"
             label="Billing Contact Last Name"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
-        <v-col>
+        <v-col col="6" sm="12" lg="4">
           <v-text-field
             v-model="formData.telNum"
             label="Tel Number"
@@ -44,6 +46,7 @@
             label="Fax Number"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
         <v-col>
@@ -56,13 +59,14 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <v-row no-gutters>
+      <v-row >
         <v-col md="6">
           <v-text-field
             v-model="formData.billingAddress"
             label="Billing Address"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
         <v-col>
@@ -80,6 +84,7 @@
             label="State/Province"
             @change="update"
             filled
+            outlined
           ></v-text-field>
         </v-col>
         <v-col>

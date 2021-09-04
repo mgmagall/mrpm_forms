@@ -66,6 +66,7 @@ export default {
       {id: 1, name: 'About', path: '/'},
       {id: 2, name: 'Genotyping', path: '/genotypingForm'},
       {id: 3, name: 'Kit', path: '/kitRequestForm'},
+      {id: 4, name: 'MICL Services', path:'/MICLServicesForm'},
     ],
     textToLoad: '',
     serialized: ''

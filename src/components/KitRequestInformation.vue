@@ -93,6 +93,12 @@
       @updateKitPaymentInformation="updateKitPaymentInformation"
     ></PaymentInformation>
 
+    <v-spacer></v-spacer>
+
+    <v-btn @click="submitKit" color="primary">
+      send form
+    </v-btn>
+
 
   </v-form>
 </template>
@@ -136,6 +142,11 @@ export default {
 
     updateKitBillingInformation: function(billingInfo){
       this.$data.formData.billingInformationData = billingInfo;
+    },
+
+    submitKit: function(){
+      const formData= JSON.stringify(this.$data.formData);
+      console.log(formData);
     }
   }
 }

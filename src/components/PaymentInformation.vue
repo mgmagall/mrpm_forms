@@ -243,10 +243,12 @@
     </p>
   </v-row>
 
+
   <v-row no-gutters class="font-weight-bold font-italic justify-center">
     <v-card class="justify-center text-center">
       *The UC Davis Mouse Biology Program is a non-profit institution*
     </v-card>
+
   </v-row>
 </v-form>
 </template>

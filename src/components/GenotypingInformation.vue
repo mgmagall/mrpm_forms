@@ -576,7 +576,7 @@
 
 
 
-    <v-btn @click="submit">
+    <v-btn @click="submit" color="primary">
       send form
     </v-btn>
 

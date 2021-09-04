@@ -24,6 +24,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "kitRequestForm" */ '../views/KitRequestForm.vue')
   },
   {
+    path: '/miclServicesForm',
+    name: 'MICL Services Form',
+    component: () => import(/* webpackChunkName: "MICLServicesForm" */ '../views/MICLServicesForm.vue')
+  },
+  {
     path: '/contact',
     name: 'Contact Information',
     component: () => import(/* webpackChunkName: "contact" */ '../views/Contact.vue')

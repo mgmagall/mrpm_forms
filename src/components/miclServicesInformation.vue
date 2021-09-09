@@ -15,7 +15,7 @@
       <v-row>
         <v-col cols="12" sm="4" md="4">
           <v-checkbox
-            v-model="rederivationSelect"
+            v-model="formData.rederivationSelect"
             label="Rederivation"
             color="blue"
             ></v-checkbox>
@@ -23,7 +23,7 @@
 
         <v-col cols="12" sm="4" md="4">
           <v-checkbox
-              v-model="resuscitationSelect"
+              v-model="formData.resuscitationSelect"
               label="Resuscitation"
               color="green"
           ></v-checkbox>
@@ -31,7 +31,7 @@
 
         <v-col cols="12" sm="4" md="4">
           <v-checkbox
-              v-model="cryopreservationSelect"
+              v-model="formData.cryopreservationSelect"
               label="Cryopreservation"
               color="orange"
           ></v-checkbox>
@@ -60,7 +60,7 @@
         </v-col>
         <v-col cols="4">
           <v-text-field
-            v-model="strainName"
+            v-model="formData.strainName"
           ></v-text-field>
         </v-col>
 
@@ -69,7 +69,7 @@
         </v-col>
         <v-col cols="3">
           <v-text-field
-            v-model="esCellLnID"
+            v-model="formData.esCellLnID"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -80,7 +80,7 @@
         </v-col>
         <v-col cols="2">
           <v-text-field
-            v-model="strainGeneticBackg"
+            v-model="formData.strainGeneticBackg"
           ></v-text-field>
         </v-col>
 
@@ -89,7 +89,7 @@
         </v-col>
         <v-col cols="3">
           <v-text-field
-            v-model="backcrossGeneration"
+            v-model="formData.backcrossGeneration"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -100,7 +100,7 @@
         </v-col>
         <v-col cols="2">
           <v-text-field
-              v-model="genotype"
+              v-model="formData.genotype"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -111,7 +111,7 @@
         </v-col>
         <v-col cols="9">
           <v-text-field
-            v-model="affectedMicePhenotype"
+            v-model="formData.affectedMicePhenotype"
           ></v-text-field>
         </v-col>
       </v-row>
@@ -124,7 +124,7 @@
       </v-col>
 
       <v-col cols="6">
-      <v-radio-group v-model="affectedGenotypes" row>
+      <v-radio-group v-model="formData.affectedGenotypes" row>
         <v-radio
           label="Heterozygotes"
           value="heterozygotes"
@@ -150,7 +150,7 @@
          </v-col>
          <v-col cols="6">
            <v-radio-group
-             v-model="sex_linked"
+             v-model="formData.sex_linked"
              row
            >
              <v-radio
@@ -183,7 +183,10 @@
       <v-expansion-panel>
         <v-expansion-panel-header color="green">Resuscitation</v-expansion-panel-header>
         <v-expansion-panel-content>
-
+          <Resuscitation_MICLService
+              :resuscitationServiceData.sync="formData.resuscitationServiceData"
+              @updateResuscitationServiceData = "updateResuscitationServiceData"
+          ></Resuscitation_MICLService>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
@@ -204,23 +207,41 @@
 
 <script>
 import Rederivation_MICLService from "./Rederivation_MICLService";
+import Resuscitation_MICLService from "./Resuscitation_MICLService";
 
 export default {
   name: "miclServicesInformation",
 
   data: () => ({
     formData:{
+      rederivationSelect: null,
+      resuscitationSelect: null,
+      cryopreservationSelect: null,
+      strainName: null,
+      esCellLnID: null,
+      strainGeneticBackg: null,
+      backcrossGeneration: null,
+      genotype: null,
+      affectedMicePhenotype: null,
+      affectedGenotypes: null,
+      sex_linked: null,
       rederivationServiceData: {},
+      resuscitationServiceData: {},
     }
   }),
 
   components:{
-    Rederivation_MICLService
+    Rederivation_MICLService,
+    Resuscitation_MICLService
   },
 
   methods: {
     updateRederivationServiceData: function(rederivationInfo){
       this.$data.formData.rederivationServiceData=rederivationInfo;
+    },
+
+    updateResuscitationServiceData: function(resuscitationInfo){
+      this.$data.formData.resuscitationServiceData=resuscitationInfo;
     }
   }
 }

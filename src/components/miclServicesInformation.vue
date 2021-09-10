@@ -1,5 +1,5 @@
 <template>
-  <form>
+  <v-form>
     <v-container>
       <v-col
         class="mb-5"
@@ -222,7 +222,7 @@
     <v-btn @click="submit" color="primary">
       Send Form
     </v-btn>
-  </form>
+  </v-form>
 </template>
 
 <script>

@@ -28,6 +28,16 @@ const routes = [
     name: 'MICL Services Form',
     component: () => import(/* webpackChunkName: "MICLServicesForm" */ '../views/MICLServicesForm.vue')
   },
+  {
+    path:'/crisprGeneEditingRequestForm',
+    name: 'CRISPR Gene Editing Request Form',
+    component: () => import(/* webpackChunkName: "CRISPRGeneEditingRequestForm" */ '../views/CRISPRGeneEditingRequestForm')
+  },
+  {
+    path:'/rodentModelCRISPRGeneEditingForm',
+    name: 'Rodent Model CRISPR Gene Editing Form',
+    component: () => import(/* webpackChunkName: "RodentModelCRISPRGeneEditingForm" */ '../views/RodentModelCRISPRGeneEditingForm')
+  }
 ]
 
 const router = new VueRouter({

@@ -67,6 +67,8 @@ export default {
       {id: 2, name: 'Genotyping', path: '/genotypingForm'},
       {id: 3, name: 'Kit', path: '/kitRequestForm'},
       {id: 4, name: 'MICL Services', path:'/MICLServicesForm'},
+      {id: 5, name: 'CRISPR Gene Editing', path:'/CRISPRGeneEditingRequestForm'},
+      {id: 6, name: 'Rodent Model CRISPR Gene Editing', path:'/RodentModelCRISPRGeneEditingForm'}
     ],
     textToLoad: '',
     serialized: ''

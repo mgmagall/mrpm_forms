@@ -194,20 +194,44 @@
       <v-expansion-panel>
         <v-expansion-panel-header color="orange">Cryopreservation</v-expansion-panel-header>
         <v-expansion-panel-content>
-
+          <Cryopreservation_MICLService
+              :cryopreservationServiceData.sync="formData.cryopreservationServiceData"
+              @updateCryopreservationServiceData = "updateCryopreservationServiceData"
+          ></Cryopreservation_MICLService>
         </v-expansion-panel-content>
       </v-expansion-panel>
 
 
     </v-expansion-panels>
 
+    <contact
+        :contactData.sync="formData.contactData"
+        @updateMICLServiceContact="updateMICLServiceContact"
+    ></contact>
 
+    <BillingInformation
+      :billingInformationData.sync="formData.billingInformationData"
+      @updateMICLServiceBillingInformation="updateMICLServiceBillingInformation"
+    ></BillingInformation>
+
+    <PaymentInformation
+      :paymentInformationData.sync="formData.paymentInformationData"
+      @updateMICLServicePaymentInformation="updateMICLServicePaymentInformation"
+    ></PaymentInformation>
+
+    <v-btn @click="submit" color="primary">
+      Send Form
+    </v-btn>
   </form>
 </template>
 
 <script>
 import Rederivation_MICLService from "./Rederivation_MICLService";
 import Resuscitation_MICLService from "./Resuscitation_MICLService";
+import Cryopreservation_MICLService from "./Cryopreservation_MICLService";
+import contact from './ContactInformation';
+import PaymentInformation from "./PaymentInformation";
+import BillingInformation from "./BillingInformation";
 
 export default {
   name: "miclServicesInformation",
@@ -225,24 +249,55 @@ export default {
       affectedMicePhenotype: null,
       affectedGenotypes: null,
       sex_linked: null,
+
       rederivationServiceData: {},
       resuscitationServiceData: {},
+      cryopreservationServiceData: {},
+
+      contactData: {},
+      paymentInformationData: {},
+      billingInformationData: {}
     }
   }),
 
   components:{
     Rederivation_MICLService,
-    Resuscitation_MICLService
+    Resuscitation_MICLService,
+    Cryopreservation_MICLService,
+    contact,
+    PaymentInformation,
+    BillingInformation
   },
 
   methods: {
+
     updateRederivationServiceData: function(rederivationInfo){
       this.$data.formData.rederivationServiceData=rederivationInfo;
     },
 
     updateResuscitationServiceData: function(resuscitationInfo){
       this.$data.formData.resuscitationServiceData=resuscitationInfo;
-    }
+    },
+
+    updateCryopreservationServiceData: function(cryoInfo){
+      this.$data.formData.cryopreservationServiceData=cryoInfo;
+    },
+
+    updateMICLServiceContact: function (contactInfo){
+      this.$data.formData.contactData = contactInfo;
+    },
+    updateMICLServicePaymentInformation: function(paymentInfo){
+      this.$data.formData.paymentInformationData = paymentInfo;
+    },
+    updateMICLServiceBillingInformation: function(billingInfo){
+      this.$data.formData.billingInformationData = billingInfo;
+    },
+
+    submit: function(){
+      const formData= JSON.stringify(this.$data.formData);
+      console.log(formData);
+    },
+
   }
 }
 </script>

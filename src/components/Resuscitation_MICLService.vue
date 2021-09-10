@@ -208,11 +208,17 @@
       </v-row>
     </v-container>
 
+    <genotypingSection_MICLForm
+        :genotypingSection_rederivData.sync="formData.genotypingSection_resusData"
+        @updateGenoSection_miclFormData = "updateGenoSection_miclFormData"
+    ></genotypingSection_MICLForm>
+
   </v-form>
 
 </template>
 
 <script>
+import genotypingSection_MICLForm from "./genotypingSection_MICLForm";
 export default {
   name: "Resuscitation_MICLService",
 
@@ -234,14 +240,21 @@ export default {
       numOfStraws: null,
       embryoSampleIDs: null,
       numofEmbryos: null,
-      embryo_otherCryopreserves: null
+      embryo_otherCryopreserves: null,
+      genotypingSection_resusData: {}
     }
   }),
+  components: {
+    genotypingSection_MICLForm
+  },
 
   methods:{
     update() {
       this.$emit("updateResuscitationServiceData",this.$data.formData)
-    }
+    },
+    updateGenoSection_miclFormData: function(genoData){
+      this.$data.formData.genotypingSection_resusData=genoData;
+    },
   },
 }
 </script>
